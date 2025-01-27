@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: libra-web
+  labels:
+    app: libra-web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: libra-web
+  template:
+    metadata:
+      labels:
+        app: libra-web
+    spec:
+      containers:
+        - name: libra-web
+          image: libra-web:latest
+          ports:
+            - containerPort: 80
+              protocol: TCP

@@ -1,0 +1,18 @@
+apiVersion: skaffold/v4beta12
+kind: Config
+metadata:
+  name: libra-web
+build:
+  artifacts:
+    - image: libra-web
+      context: ../app
+      docker:
+        dockerfile: app/Dockerfile
+  local:
+    push: false
+    useBuildkit: true
+manifests:
+  helm:
+    releases:
+      - name: libra-web
+        chartPath: app/helm
