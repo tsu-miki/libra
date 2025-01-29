@@ -15,8 +15,7 @@ spec:
         app: libra-web
     spec:
       containers:
-        - name: libra-web
-          image: libra-web:latest
-          ports:
-            - containerPort: 80
-              protocol: TCP
+      - name: libra-web
+        image: {{ .Values.image }}
+        ports:
+        - containerPort: 80

@@ -7,7 +7,7 @@ build:
     - image: libra-web
       context: ../app
       docker:
-        dockerfile: app/Dockerfile
+        dockerfile: Dockerfile
   local:
     push: false
     useBuildkit: true
@@ -15,4 +15,6 @@ manifests:
   helm:
     releases:
       - name: libra-web
-        chartPath: app/helm
+        chartPath: helm
+        setValueTemplates:
+          image: "{{ .IMAGE_FULLY_QUALIFIED_libra_web }}"

@@ -1,9 +1,9 @@
 FROM node:22-bookworm as builder
 WORKDIR /app
 RUN npm i -g bun
-COPY package.json bun.lockb /app/
+COPY package.json bun.lockb .
 RUN bun i --frozen-lockfile
-COPY . /app
+COPY . .
 RUN bun build --outfile=bundle.js --outdir ./dist ./src/my-element.ts
 
 FROM nginx:1.26.2-alpine
