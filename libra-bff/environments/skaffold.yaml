@@ -1,0 +1,18 @@
+apiVersion: skaffold/v4beta12
+kind: Config
+build:
+  artifacts:
+    - image: libra-bff
+      context: ../app
+      docker:
+        dockerfile: Dockerfile
+  local:
+    push: false
+    useBuildkit: true
+manifests:
+  helm:
+    releases:
+    - name: libra-bff
+      chartPath: ../helm
+      setValueTemplates:
+        image: "{{ .IMAGE_FULLY_QUALIFIED_libra_bff }}"

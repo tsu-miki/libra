@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: libra-bff-svc
+spec:
+  selector:
+    app: libra-bff
+  ports:
+    - protocol: TCP
+      port: 11000
+      targetPort: 80

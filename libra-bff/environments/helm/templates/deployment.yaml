@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: libra-bff
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      labels:
+        app: libra-bff
+  template:
+    metadata:
+      labels:
+        app: libra-bff
+    spec:
+      containers:
+      - name: libra-bff
+        image: {{ .Values.image }}
+        ports:
+        - containerPort: 80
